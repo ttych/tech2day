@@ -1,0 +1,13 @@
+<hr/>
+{{ site.tags }}
+<hr/>
+{{ site.pages | size }}
+<hr/>
+{{ site.pages | map: "url" | join: "<br/>" }}
+<hr/>
+{{ site.posts | size }}
+<hr/>
+{{ site.categories }}
+<hr/>
+{{ site.documents | size }}
+<hr/>

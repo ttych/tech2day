@@ -1,0 +1,40 @@
+---
+layout: default
+---
+
+<section class="content">
+  <head class="content-item content-head">
+    {%- if page.title -%}
+    <h1 class="content-title">{{ page.title }}</h1>
+    {%- endif -%}
+    {%- include article-meta.html -%}
+  </head>
+  <main class="content-item content-main">
+    <div class="timeline">
+    {%- assign pre_year = "none" -%}
+    {%- for post in site.posts -%}
+      {%- assign this_year = post.date | date: "%Y" -%}
+      {%- assign this_day = post.date | date: "%d" -%}
+      {%- assign this_month = post.date | date: "%b" -%}
+
+      {% if this_year != pre_year %}
+      <div class="timeline-item-lead">
+        <div class="timeline-date"><span class="timeline-year">{{this_year}}</span></div>
+      </div>
+      {% endif %}
+      <div class="timeline-item">
+        <div class="timeline-date">
+          <span class="day">{{ this_day }}</span>
+          <span class="month text-small text-muted">{{ this_month }}</span>
+        </div>
+        <div class="timeline-info">
+          <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </div>
+      </div>
+      {%- assign  pre_year = this_year -%}
+    {% endfor %}
+    </div>
+  </main>
+  <footer class="content-item content-footer">
+  </footer>
+</section>

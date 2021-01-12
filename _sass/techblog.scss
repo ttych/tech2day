@@ -1,0 +1,39 @@
+@charset "utf-8";
+
+
+$on-palm:          600px !default;
+$on-laptop:        800px !default;
+
+$font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+$font-size: 13px;
+
+$background-color: #fff;
+
+$sidebar-background: #095b6c;
+$sidebar-color: #fff;
+$sidebar-color-alt: #aaa;
+
+$content-color: #000;
+$content-color-annotation: #666;
+
+$code-background: #eef;
+
+$timeline-dot-lead-bg-color: #fff;
+$timeline-dot-lead-border-color: #095b6c;
+$timeline-dot-bg-color: #095b6c;
+$timeline-dot-border-color: rgba(255, 255, 255, 0);
+$timeline-line-color: lighten($timeline-dot-bg-color, 40%);
+
+
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+    @content;
+  }
+}
+
+
+@import
+"techblog/base",
+"techblog/layout",
+"techblog/syntax-highlighting"
+;

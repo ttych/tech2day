@@ -1,0 +1,15 @@
+{%- assign my_page = include.page | default: page -%}
+{%- if my_page.layout == 'article' -%}
+<ul class="article-meta">
+  {%- if my_page.date -%}
+  <li><i class="far fa-calendar"></i> {% include timeago.html date=my_page.date tooltip=true %}</li>
+  {%- endif -%}
+  <li><i class="far fa-clock"></i> {% include read-time.html content=my_page.content %}</li>
+  {%- if my_page.author -%}
+  <li><i class="fas fa-signature"></i> {{ my_page.author }}</li>
+  {%- endif -%}
+  {%- if my_page.tags and my_page.tags.size > 0 -%}
+  <li><i class="fas fa-tags"></i> {{ my_page.tags | join: ", " }}</li>
+  {%- endif -%}
+</ul>
+{%- endif -%}

@@ -1,0 +1,76 @@
+url: ""
+baseurl: "/tech2day"
+title: Tech2day
+description: >-
+  Tech topics I meet day 2 day, as a system engineer, developer and
+  agile practicist.
+
+site_github: ttych/tech2day
+# site_gitlab: ttych/tech2day
+
+author: Thomas Tych
+email: thomas.tych@gmail.com
+# twitter_username: ThomasTych
+# github_username:  ttych
+# gitlab_username:  ttych
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-redirect-from
+
+collections:
+  posts:
+    title: articles
+    order: 1
+  # documentation:
+  #   output: true
+  #   sort_by: updated_on
+  #   preview_count: 5
+  #   show_excerpts: true
+  #   order: 2
+
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: posts
+    values:
+      show_excerpt: true
+      layout: article
+      author: Thomas Tych
+  # -
+  #   scope:
+  #     path: ""
+  #     type: documentation
+  #   values:
+  #     show_excerpt: true
+  #     layout: article
+  #     author: Thomas Tych
+
+pagination:
+  enabled: true
+  debug: false
+  per_page: 5
+  permalink: /articles/:num/
+  # title: ' - page :num'
+  limit: 0
+  sort_field: date
+  sort_reverse: true
+  trail:
+    before: 2
+    after: 2
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - tmp/

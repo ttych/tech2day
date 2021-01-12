@@ -1,0 +1,51 @@
+{%- assign hide_username = include.hide_username | default: false -%}
+<ul class="contact-list">
+  {%- if site.author -%}
+  {%- unless hide_username -%}<li><i class="fas fa-signature text-icon"></i> <span class="contact-id">{{ site.author }}</span></li>{%- endunless -%}
+    {%- if site.website -%}
+  <li><a href="{{ site.website | cgi_escape | escape }}"><i class="fas
+    fa-globe text-icon"></i>{%- unless hide_username -%} <span class="contact-id">{{ site.author }}</span>{%- endunless -%}</a></li>
+    {%- endif -%}
+  {%- endif -%}
+  {%- if site.github_username -%}
+  <li><a href="https://github.com/{{ site.github_username| cgi_escape | escape }}"><i class="fab fa-github text-icon"></i>{%- unless hide_username -%} <span class="username">{{ site.github_username| escape }}</span>{%- endunless -%}</a></li>
+  {%- endif -%}
+  {%- if site.gitlab_username -%}
+  <li><a href="https://gitlab.com/{{ site.gitlab_username| cgi_escape | escape }}"><i class="fab fa-gitlab text-icon"></i>{%- unless hide_username -%} <span class="username">{{ site.gitlab_username| escape }}</span>{%- endunless -%}</a></li>
+  {%- endif -%}
+  {%- if site.dribbble_username -%}
+  <li><a href="https://dribbble.com/{{ site.dribbble_username| cgi_escape | escape }}"><i class="fab fa-dribbble text-icon"></i>{%- unless hide_username -%} <span class="username">{{ site.dribbble_username| escape }}</span>{%- endunless -%}</a></li>
+  {%- endif -%}
+  {%- if site.facebook_username -%}
+  <li><a href="https://www.facebook.com/{{ site.facebook_username| cgi_escape | escape }}"><i class="fab fa-facebook text-icon"></i>{%- unless hide_username -%} <span class="username">{{ site.facebook_username| escape }}</span>{%- endunless -%}</a></li>
+  {%- endif -%}
+  {%- if site.flickr_username -%}
+  <li><a href="https://www.flickr.com/photos/{{ site.flickr_username| cgi_escape | escape }}"><i class="fab fa-flickr text-icon"></i>{%- unless hide_username -%} <span class="username">{{ site.flickr_username| escape }}</span>{%- endunless -%}</a></li>
+  {%- endif -%}
+  {%- if site.instagram_username -%}
+  <li><a href="https://instagram.com/{{ site.instagram_username| cgi_escape | escape }}"><i class="fab fa-instagram text-icon"></i>{%- unless hide_username -%} <span class="username">{{ site.instagram_username| escape }}</span>{%- endunless -%}</a></li>
+  {%- endif -%}
+  {%- if site.linkedin_username -%}
+  <li><a href="https://www.linkedin.com/in/{{ site.linkedin_username| cgi_escape | escape }}"><i class="fab fa-linkedin text-icon"></i>{%- unless hide_username -%} <span class="username">{{ site.linkedin_username| escape }}</span>{%- endunless -%}</a></li>
+  {%- endif -%}
+  {%- if site.pinterest_username -%}
+  <li><a href="https://www.pinterest.com/{{ site.pinterest_username| cgi_escape | escape }}"><i class="fab fa-pinterest text-icon"></i>{%- unless hide_username -%} <span class="username">{{ site.pinterest_username| escape }}</span>{%- endunless -%}</a></li>
+  {%- endif -%}
+  {%- for mst in site.mastodon -%}
+    {%- if mst.username and mst.instance -%}
+  <li><a href="https://{{ mst.instance| cgi_escape | escape}}/@{{mst.username}}"><i class="fab fa-mastodon text-icon"></i>{%- unless hide_username -%} <span class="username">{{ mst.username|escape }}</span>{%- endunless -%}</a></li>
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if site.twitter_username -%}
+  <li><a href="https://www.twitter.com/{{ site.twitter_username| cgi_escape | escape }}"><i class="fab fa-twitter text-icon"></i>{%- unless hide_username -%} <span class="username">{{ site.twitter_username| escape }}</span>{%- endunless -%}</a></li>
+  {%- endif -%}
+  {%- if site.youtube_username -%}
+  <li><a href="https://youtube.com/{{ site.youtube_username| cgi_escape | escape }}"><i class="fab fa-youtube text-icon"></i>{%- unless hide_username -%} <span class="username">{{ site.youtube_username| escape }}</span>{%- endunless -%}</a></li>
+  {%- endif -%}
+  {%- if site.googleplus_username -%}
+  <li><a href="https://plus.google.com/{{ site.googleplus_username| escape }}"><i class="fab fa-google-plus text-icon"></i>{%- unless hide_username -%} <span class="username">{{ site.googleplus_username| escape }}</span>{%- endunless -%}</a></li>
+  {%- endif -%}
+  {%- if site.author_rss -%}
+  <li><a href="{{ site.author_rss | relative_url }}"><i class="fas fa-rss text-icon"></i>{%- unless hide_username -%} <span>{{ site.rss | escape }}</span>{%- endunless -%}</a></li>
+  {%- endif -%}
+</ul>

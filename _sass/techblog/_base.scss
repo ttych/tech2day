@@ -1,0 +1,57 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: block; /* Default value of `display` of `main` element is 'inline' in IE 11. */
+}
+
+a {
+    text-decoration: none;
+    color: #007bff;
+    background-color: transparent;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+img {
+    max-width: 100%;
+}
+figure > img {
+    display: block;
+}
+figcaption {
+    font-size: 0.8rem;
+}
+
+
+
+pre,
+code {
+    font-size: 1rem;
+    border: 1px solid grey;
+    border-radius: 3px;
+    background-color: $code-background;
+}
+
+code {
+    padding: 1px 5px;
+}
+
+pre {
+    padding: 8px 12px;
+    overflow-x: auto;
+
+    > code {
+        border: 0;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}

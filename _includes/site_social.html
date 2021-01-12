@@ -1,0 +1,9 @@
+<ul class="site-social-list">
+  {%- if site.site_github -%}
+  <li class="site-social-item github"><a href="https://github.com/{{ site.site_github | escape }}"><i class="fab fa-github"></i></a></li>
+  {%- endif -%}
+  {%- if site.site_gitlab -%}
+  <li class="site-social-item gitlab"><a href="https://gitlab.com/{{ site.site_gitlab | escape }}"><i class="fab fa-gitlab"></i></a></li>
+  {%- endif -%}
+  <li class="site-social-item rss"><a class="site-link" href="{{ "/feed.xml" | relative_url }}"><i class="fas fa-rss"></i></a></li>
+</ul>

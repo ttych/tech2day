@@ -1,0 +1,21 @@
+---
+layout: default
+---
+
+<section class="content">
+  <head class="content-item content-head">
+    {%- if page.title -%}
+    <h1 class="content-title">{{ page.title }}</h1>
+    {%- endif -%}
+    {%- include article-meta.html -%}
+  </head>
+  <main class="content-item content-main">
+    {{ content }}
+  </main>
+  <footer class="content-item content-footer">
+    {%- include paginator-pager.html -%}
+  </footer>
+</section>
+
+<aside class="content-aside">
+</aside>

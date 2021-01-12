@@ -1,0 +1,60 @@
+<nav class="site-sidebar">
+  <div class="sidebar-item sidebar-header">
+    <a href="{{ "/" | relative_url }}">{{ site.title | escape }}</a>
+    {%- include site_social.html -%}
+    {%- if site.description -%}
+    <p>{{ site.description | escape }}</p>
+    {%- endif -%}
+  </div>
+
+  {%- for collection in site.collections -%}
+    {%- unless collection.output -%}
+      {%- continue -%}
+    {%- endunless -%}
+  <div class="sidebar-item sidebar-nav" style="order: {{ collection.order | default: 10 }};">
+    <ul>
+      {%- assign collection_title = collection.title | default: collection.label | capitalize -%}
+      <li class="sidebar-nav-title">{{ collection_title }}</li>
+      {%- assign collection_pages = site.pages | where: 'index_for', collection.label -%}
+      {%- for collection_page in collection_pages -%}
+      <li class="sidebar-nav-item"><a href="{{ collection_page.url | relative_url }}">{{ collection_page.link_title | default: collection_page.title | escape }}</a></li>
+      {%- endfor -%}
+    </ul>
+  </div>
+  {%- endfor -%}
+
+  <div class="sidebar-item sidebar-nav" style="order: 100;">
+    <ul>
+      <li class="sidebar-nav-title">Pages</li>
+      {%- assign default_urls = site.pages | map: "url" -%}
+      {%- assign page_urls = site.menu_pages | default: default_urls -%}
+      {%- assign url_uniq = "" | split: "" -%}
+      {%- for url in page_urls -%}
+      {%- assign my_page = site.pages | where: "url", url | first -%}
+        {%- if my_page.layout == 'index' and my_page.index_for != 'pages' -%}
+          {%- continue -%}
+        {%- endif -%}
+        {%- if my_page.link_title or my_page.title -%}
+          {%- if url_uniq contains my_page.url -%}
+            {%- continue -%}
+          {%- else -%}
+            {%- assign url_uniq = url_uniq | push: my_page.url -%}
+          {%- endif -%}
+        <li class="sidebar-nav-item" style="order: {{ my_page.order | default: 99 }}"><a href="{{ my_page.url | relative_url }}">{{ my_page.link_title | default: my_page.title | escape }}</a></li>
+        {%- endif -%}
+      {%- endfor -%}
+    </ul>
+  </div>
+
+  <div class="sidebar-item sidebar-padding">
+  </div>
+
+  <div class="sidebar-item sidebar-social">
+    {%- include social.html hide_username=true -%}
+  </div>
+
+  <div class="sidebar-item sidebar-footer">
+    <p>Published on {{ site.time | date_to_string }}.</p>
+    <p>Powered by <a href="https://github.com/jekyll/jekyll">Jekyll</a>.</p>
+  </div>
+</nav>
