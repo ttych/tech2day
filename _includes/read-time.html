@@ -1,4 +1,4 @@
-{%- assign words = include.content | strip_html | number_of_words: "auto" -%}
+{%- assign words = include.content | strip_html | number_of_words -%}
 {%- assign wpm = include.wpm | default: site.wpm | default: 180 -%}
 {%- assign read_time = words | divided_by: wpm -%}
 
