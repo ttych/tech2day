@@ -49,18 +49,8 @@ defaults:
   #     layout: article
   #     author: Thomas Tych
 
-pagination:
-  enabled: true
-  debug: false
-  per_page: 5
-  permalink: /articles/:num/
-  # title: ' - page :num'
-  limit: 0
-  sort_field: date
-  sort_reverse: true
-  trail:
-    before: 2
-    after: 2
+paginate: 10
+paginate_path: "/articles/page:num/"
 
 exclude:
   - .sass-cache/

@@ -4,6 +4,10 @@
   <li>
     <a href="{{ paginator.first_page_path | prepend: site.baseurl | replace: '//', '/' }}">First</a>
   </li>
+  {% else %}
+  <li>
+    <a href="{{ site.paginate_path | relative_url | replace: 'page:num/', '' }}">First</a>
+  </li>
   {% endif %}
 
   {% if paginator.previous_page %}
@@ -18,6 +22,16 @@
     <a href="{{ trail.path | prepend: site.baseurl | replace: '//', '/' }}" title="{{trail.title}}">{{ trail.num }}</a>
   </li>
   {% endfor %}
+  {% else %}
+  {% for page in (1..paginator.total_pages) %}
+  <li {% if page == paginator.page %}class="articles-pager-selected"{% endif %}>
+    {% if page == 1 %}
+    <a href="{{ site.paginate_path | relative_url | replace: 'page:num/', '' }}">{{ page }}</a>
+    {% else %}
+    <a href="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</a>
+    {% endif %}
+  </li>
+  {% endfor %}
   {% endif %}
 
   {% if paginator.next_page %}
@@ -29,6 +43,10 @@
   {% if paginator.last_page %}
   <li>
     <a href="{{ paginator.last_page_path | prepend: site.baseurl | replace: '//', '/' }}">Last</a>
+  </li>
+  {% else %}
+  <li>
+    <a href="{{ site.paginate_path | relative_url | replace: ':num', paginator.total_pages }}">Last</a>
   </li>
   {% endif %}
 </ul>
